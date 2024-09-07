@@ -1,12 +1,13 @@
 import React from'react'  
 import { useState } from 'react'
 import './App.css'
+import axios from'axios';
 
 function App() {
   const [formData,setFormData] = useState({
     name:' ',
     email :' ',
-    password:' ',
+    message:' ',
  });
   
   const handleChange = (e) => {
@@ -21,8 +22,7 @@ function App() {
     try{
       const response = await axios.post('http://localhost:5000/submit',formData)
       console.log(response.data);
-      alert('form submitted sucessfully'
-      );
+      alert('form submitted sucessfully');
 
     }catch (error){
       console.erreo('error submitting form',error);
@@ -44,8 +44,9 @@ function App() {
       </div>
       <div>
         <label>password:</label>
-        <input type='text' name='email' value={formData.password} onChange={handleChange} required/>   
+        <input type='text' name='message' value={formData.message} onChange={handleChange} required/>   
          </div>
+         <button type = 'submit button'>submit</button>       
           </form>
       
        </>
